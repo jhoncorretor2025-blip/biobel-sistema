@@ -45,7 +45,7 @@ localStorage.setItem("biobel_vendas_v1",JSON.stringify(vendas))
 }
 
 // =============================
-// PRODUTOS
+// PRODUTOS (CARDS)
 // =============================
 
 function carregarProdutos(){
@@ -60,11 +60,18 @@ produtos.forEach(p=>{
 
 lista.innerHTML += `
 
-<div class="card" onclick="addCarrinho(${p.id})">
+<div class="produto" onclick="addCarrinho(${p.id})">
+
+<div class="produto-tags">
+
+<span class="tag-categoria">${p.categoria}</span>
+<span class="tag-marca">${p.marca}</span>
+
+</div>
 
 <h3>${p.nome}</h3>
-<p>${p.marca}</p>
-<strong>R$ ${p.preco}</strong>
+
+<strong>R$ ${p.preco.toFixed(2)}</strong>
 
 </div>
 
@@ -168,7 +175,7 @@ alert("Venda registrada")
 }
 
 // =============================
-// CONFIGURAÇÃO
+// CADASTRAR PRODUTO
 // =============================
 
 function cadastrarProduto(){
@@ -194,9 +201,15 @@ salvarTudo()
 
 renderProdutosConfig()
 
+carregarProdutos()
+
 alert("Produto cadastrado")
 
 }
+
+// =============================
+// LISTAR PRODUTOS CONFIG
+// =============================
 
 function renderProdutosConfig(){
 
@@ -242,6 +255,8 @@ salvarTudo()
 
 renderProdutosConfig()
 
+carregarProdutos()
+
 }
 
 function editarProduto(index){
@@ -268,6 +283,8 @@ preco:Number(novoPreco)
 salvarTudo()
 
 renderProdutosConfig()
+
+carregarProdutos()
 
 }
 
