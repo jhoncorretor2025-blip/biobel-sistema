@@ -1,55 +1,131 @@
-:root{
-  --bg:#f5f7f8;
-  --white:#fff;
-  --muted:#9aa3a8;
-  --accent:#22c55e;
-  --dark:#1f2937;
-  --card-shadow: 0 6px 18px rgba(16,24,40,0.06);
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+*{
+box-sizing:border-box;
+font-family:Inter, Arial, sans-serif;
 }
 
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);display:flex;min-height:100vh;color:var(--dark);}
+body{
+margin:0;
+background:#f5f7f9;
+display:flex;
+height:100vh;
+}
+
+/* MENU */
 
 .sidebar{
-  width:220px;padding:20px;background:var(--white);box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:12px;
+width:220px;
+background:white;
+padding:20px;
+border-right:1px solid #eee;
 }
-.sidebar h1{font-size:20px;margin:0 0 8px 0}
-.sidebar nav button{display:block;width:100%;padding:10px;border-radius:8px;border:none;background:#f3f5f6;cursor:pointer;margin-bottom:6px;text-align:left}
-.sidebar nav button:hover{background:var(--accent);color:white}
 
-.container{flex:1;display:flex;flex-direction:column}
-.topbar{padding:18px 22px;border-bottom:1px solid #eef2f4;background:transparent}
-.content{display:flex;gap:20px;padding:18px;}
+.sidebar h1{
+font-size:20px;
+margin-bottom:20px;
+}
 
-.col{display:flex;flex-direction:column}
-.produtos-col{flex:2}
-.carrinho-col{width:360px;background:var(--white);padding:14px;border-radius:10px;box-shadow:var(--card-shadow)}
+.sidebar button{
 
-.produtos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;padding:10px}
-.card{background:var(--white);padding:14px;border-radius:10px;box-shadow:var(--card-shadow);cursor:pointer;display:flex;flex-direction:column;justify-content:space-between}
-.card h3{margin:0 0 6px 0}
-.card p{margin:0;color:var(--accent);font-weight:700}
+width:100%;
+padding:12px;
+border:none;
+margin-bottom:10px;
+border-radius:8px;
+background:#f1f1f1;
+cursor:pointer;
+font-weight:500;
 
-.manual-card{margin:18px 0;padding:12px;background:#fff;border-radius:8px;box-shadow:var(--card-shadow)}
+}
 
-.carrinho-list{max-height:360px;overflow:auto}
-.carrinho-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed #eee}
-.btn-primary{width:100%;padding:12px;border:none;background:var(--accent);color:white;border-radius:8px;cursor:pointer;font-weight:600}
+.sidebar button:hover{
+background:#22c55e;
+color:white;
+}
 
-.card small{color:var(--muted)}
-.total-box{margin-top:8px;padding:8px 10px;background:#f9fafb;border-radius:8px;font-weight:700}
+/* CONTEÚDO */
 
-.atendimentos{margin-top:12px;padding:8px;background:#fff;border-radius:8px;box-shadow:var(--card-shadow)}
-.row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.container{
+flex:1;
+display:flex;
+flex-direction:column;
+}
 
-.config-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{padding:12px}
+.topbar{
+padding:20px;
+border-bottom:1px solid #eee;
+}
 
-.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;padding:12px}
+.content{
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
 
-@media(max-width:900px){
-  .content{flex-direction:column}
-  .carrinho-col{width:auto}
-  .sidebar{display:flex;flex-direction:row;gap:8px;overflow:auto}
+/* CARDS */
+
+.card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* INPUTS */
+
+input, select{
+
+width:100%;
+padding:10px;
+margin-top:8px;
+margin-bottom:12px;
+border-radius:6px;
+border:1px solid #ddd;
+
+}
+
+/* BOTÕES */
+
+button{
+
+padding:10px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.btn-add{
+background:#22c55e;
+color:white;
+}
+
+.btn-delete{
+background:#ef4444;
+color:white;
+}
+
+.btn-edit{
+background:#3b82f6;
+color:white;
+}
+
+/* LISTAS */
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:6px 0;
+border-bottom:1px solid #eee;
+}
+
+.actions{
+display:flex;
+gap:6px;
 }
