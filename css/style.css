@@ -242,3 +242,65 @@ border-top:1px solid #e5e7eb;
 }
 
 }
+
+/* CARD PRODUTO PROFISSIONAL */
+
+.produto{
+
+background:white;
+padding:16px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
+cursor:pointer;
+transition:0.2s;
+
+display:flex;
+flex-direction:column;
+gap:8px;
+
+}
+
+.produto:hover{
+
+transform:translateY(-3px);
+
+}
+
+.produto-tags{
+
+display:flex;
+gap:6px;
+font-size:11px;
+
+}
+
+.tag-categoria{
+
+background:#d1fae5;
+color:#065f46;
+padding:3px 6px;
+border-radius:6px;
+font-weight:600;
+
+}
+
+.tag-marca{
+
+background:#f3f4f6;
+padding:3px 6px;
+border-radius:6px;
+
+}
+
+.produto h3{
+
+margin:0;
+font-size:15px;
+font-weight:600;
+
+}
+
+.produto strong{
+
+font-size:18px;
+}
