@@ -1,385 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Biobel - Sistema de Vendas</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 
-<style>
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:'Inter',sans-serif;
-}
-
-body{
-background:#f5f6f8;
-display:flex;
-height:100vh;
-}
-
-.sidebar{
-width:220px;
-background:white;
-border-right:1px solid #eee;
-padding:20px;
-}
-
-.sidebar h2{
-margin-bottom:20px;
-}
-
-.menu button{
-width:100%;
-padding:12px;
-margin-bottom:10px;
-border:none;
-background:#f3f3f3;
-border-radius:8px;
-cursor:pointer;
-}
-
-.menu button:hover{
-background:#22c55e;
-color:white;
-}
-
-.main{
-flex:1;
-display:flex;
-}
-
-.produtos{
-flex:3;
-padding:20px;
-}
-
-.categorias{
-margin-bottom:20px;
-}
-
-.categorias button{
-margin-right:10px;
-padding:8px 12px;
-border:none;
-background:#e5e7eb;
-border-radius:6px;
-cursor:pointer;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.05);
-cursor:pointer;
-transition:0.2s;
-}
-
-.card:hover{
-transform:scale(1.03);
-}
-
-.card h3{
-font-size:16px;
-margin-bottom:10px;
-}
-
-.card p{
-font-weight:bold;
-color:#22c55e;
-}
-
-.carrinho{
-flex:1;
-background:white;
-border-left:1px solid #eee;
-padding:20px;
-display:flex;
-flex-direction:column;
-}
-
-.item{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-}
-
-.total{
-margin-top:auto;
-font-size:20px;
-font-weight:bold;
-}
-
-.finalizar{
-margin-top:10px;
-padding:14px;
-border:none;
-background:#22c55e;
-color:white;
-font-size:16px;
-border-radius:8px;
-cursor:pointer;
-}
-
-.finalizar:hover{
-background:#16a34a;
-}
-
-.dashboard{
-padding:20px;
-display:none;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-margin-top:20px;
-}
-
-.cardDash{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-</style>
 </head>
 
 <body>
+
+<!-- MENU LATERAL -->
 
 <div class="sidebar">
 
 <h2>Biobel</h2>
 
-<div class="menu">
+<nav>
 
-<button onclick="mostrar('vendas')">Vendas</button>
-<button onclick="mostrar('dashboard')">Dashboard</button>
+<button onclick="window.location.href='vendas.html'">
+🛒 Vendas
+</button>
+
+<button onclick="window.location.href='dashboard.html'">
+📊 Dashboard
+</button>
+
+<button onclick="window.location.href='configuracao.html'">
+⚙ Configuração
+</button>
+
+</nav>
 
 </div>
 
-</div>
+
+<!-- CONTEÚDO PRINCIPAL -->
 
 <div class="main">
 
-<div class="produtos" id="vendas">
+<h1>Bem-vindo ao Sistema Biobel</h1>
 
-<h2>Produtos</h2>
+<p>
+Este sistema foi criado para controlar as vendas da loja,
+registrar produtos vendidos, acompanhar desempenho da equipe
+e visualizar relatórios da loja.
+</p>
 
-<div class="categorias">
+<br>
 
-<button onclick="filtrar('todos')">Todos</button>
-<button onclick="filtrar('cabelo')">Cabelo</button>
-<button onclick="filtrar('perfume')">Perfume</button>
-<button onclick="filtrar('maquiagem')">Maquiagem</button>
-<button onclick="filtrar('cremes')">Cremes</button>
+<h2>O que você pode fazer aqui:</h2>
 
-</div>
+<ul>
 
-<div class="grid" id="listaProdutos"></div>
+<li>Registrar vendas rapidamente</li>
 
-</div>
+<li>Controlar caixa da loja</li>
 
-<div class="dashboard" id="dashboard">
+<li>Ver desempenho das vendedoras</li>
 
-<h2>Dashboard</h2>
+<li>Acompanhar vendas por produto</li>
 
-<div class="cards">
+<li>Gerenciar cadastro de produtos</li>
 
-<div class="cardDash">
-<h4>Total Vendido</h4>
-<p id="totalVendido">R$ 0</p>
-</div>
+</ul>
 
-<div class="cardDash">
-<h4>Total de Vendas</h4>
-<p id="totalVendas">0</p>
-</div>
+<br>
 
-<div class="cardDash">
-<h4>Ticket Médio</h4>
-<p id="ticketMedio">R$ 0</p>
-</div>
+<h2>Menu rápido</h2>
 
-<div class="cardDash">
-<h4>Produtos Vendidos</h4>
-<p id="prodVendidos">0</p>
-</div>
+<div class="atalhos">
 
-</div>
+<button onclick="window.location.href='vendas.html'">
+Registrar Venda
+</button>
 
-</div>
+<button onclick="window.location.href='dashboard.html'">
+Ver Dashboard
+</button>
 
-<div class="carrinho">
-
-<h3>Carrinho</h3>
-
-<div id="itens"></div>
-
-<div class="total">
-Total: R$ <span id="total">0</span>
-</div>
-
-<button class="finalizar" onclick="finalizarVenda()">
-Finalizar Venda
+<button onclick="window.location.href='configuracao.html'">
+Cadastrar Produtos
 </button>
 
 </div>
 
 </div>
 
-<script>
-
-let produtos=[
-{nome:"Shampoo Truss",categoria:"cabelo",preco:99},
-{nome:"Creme Facial",categoria:"cremes",preco:50},
-{nome:"Perfume Lux",categoria:"perfume",preco:120},
-{nome:"Base Makeup",categoria:"maquiagem",preco:80}
-]
-
-let carrinho=[]
-let vendas=[]
-
-function carregarProdutos(lista){
-
-let html=""
-
-lista.forEach((p,i)=>{
-
-html+=`
-
-<div class="card" onclick="addCarrinho(${i})">
-
-<h3>${p.nome}</h3>
-<p>R$ ${p.preco}</p>
-
-</div>
-
-`
-
-})
-
-document.getElementById("listaProdutos").innerHTML=html
-
-}
-
-carregarProdutos(produtos)
-
-function addCarrinho(i){
-
-carrinho.push(produtos[i])
-
-renderCarrinho()
-
-}
-
-function renderCarrinho(){
-
-let html=""
-let total=0
-
-carrinho.forEach(p=>{
-
-total+=p.preco
-
-html+=`
-
-<div class="item">
-<span>${p.nome}</span>
-<span>R$ ${p.preco}</span>
-</div>
-
-`
-
-})
-
-document.getElementById("itens").innerHTML=html
-document.getElementById("total").innerText=total
-
-}
-
-function finalizarVenda(){
-
-let total=0
-
-carrinho.forEach(p=>total+=p.preco)
-
-vendas.push({
-valor:total,
-produtos:carrinho.length
-})
-
-carrinho=[]
-
-renderCarrinho()
-
-atualizarDashboard()
-
-alert("Venda registrada!")
-
-}
-
-function atualizarDashboard(){
-
-let total=0
-let produtos=0
-
-vendas.forEach(v=>{
-
-total+=v.valor
-produtos+=v.produtos
-
-})
-
-let ticket=total/vendas.length || 0
-
-document.getElementById("totalVendido").innerText="R$ "+total
-document.getElementById("totalVendas").innerText=vendas.length
-document.getElementById("ticketMedio").innerText="R$ "+ticket.toFixed(2)
-document.getElementById("prodVendidos").innerText=produtos
-
-}
-
-function mostrar(p){
-
-document.getElementById("vendas").style.display="none"
-document.getElementById("dashboard").style.display="none"
-
-document.getElementById(p).style.display="block"
-
-}
-
-function filtrar(cat){
-
-if(cat==="todos"){
-
-carregarProdutos(produtos)
-
-}else{
-
-let filtrado=produtos.filter(p=>p.categoria===cat)
-
-carregarProdutos(filtrado)
-
-}
-
-}
-
-</script>
+<script src="js/app.js"></script>
 
 </body>
+
 </html>
