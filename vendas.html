@@ -1,66 +1,100 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Biobel - Vendas</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biobel - Vendas</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <aside class="sidebar">
+    <h1>Biobel</h1>
+    <nav>
+      <button onclick="location.href='vendas.html'">Vendas</button>
+      <button onclick="location.href='caixa.html'">Caixa</button>
+      <button onclick="location.href='saida-caixa.html'">Saída</button>
+      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <button onclick="location.href='configuracao.html'">Configuração</button>
+    </nav>
+  </aside>
 
-<div class="sidebar">
+  <main class="container">
+    <header class="topbar">
+      <h2>Vendas</h2>
+      <div class="search-row">
+        <input id="buscarProduto" placeholder="Buscar produto ou marca..." />
+        <button onclick="filtrarBusca()">Buscar</button>
+        <button onclick="filtrarCategoria('todos')">Todos</button>
+        <button onclick="filtrarCategoria('cabelo')">Cabelo</button>
+        <button onclick="filtrarCategoria('perfume')">Perfume</button>
+        <button onclick="filtrarCategoria('maquiagem')">Maquiagem</button>
+        <button onclick="filtrarCategoria('cremes')">Cremes</button>
+      </div>
+    </header>
 
-<h2>Biobel</h2>
+    <section class="content">
+      <div class="col produtos-col">
+        <div class="produtos-grid" id="listaProdutos"></div>
 
-<button onclick="location.href='vendas.html'">Vendas</button>
-<button onclick="location.href='dashboard.html'">Dashboard</button>
-<button onclick="location.href='configuracao.html'">Configuração</button>
+        <div class="manual-card">
+          <h3>Adicionar produto manual (avulso)</h3>
+          <input id="manualNome" placeholder="Nome do produto" />
+          <input id="manualMarca" placeholder="Marca (opcional)" />
+          <input id="manualPreco" type="number" placeholder="Preço R$" />
+          <input id="manualQtd" type="number" placeholder="Quantidade" value="1" />
+          <button onclick="adicionarManual()">Adicionar manual ao carrinho</button>
+        </div>
 
-</div>
+      </div>
 
-<div class="main">
+      <aside class="col carrinho-col">
+        <h3>Carrinho / Venda</h3>
 
-<h1>Produtos</h1>
+        <div id="carrinhoItens" class="carrinho-list"></div>
 
-<div id="listaProdutos"></div>
+        <hr />
 
-</div>
+        <label>Vendedora</label>
+        <select id="vendedoraSelect"></select>
 
-<div class="carrinho">
+        <label>Turno</label>
+        <select id="turnoSelect">
+          <option>Manhã</option>
+          <option>Tarde</option>
+        </select>
 
-<h2>Carrinho</h2>
+        <label>Pagamento (preencha valores em cada campo)</label>
+        <input id="pagDinheiro" type="number" placeholder="Dinheiro R$" />
+        <input id="pagPix" type="number" placeholder="PIX R$" />
+        <input id="pagDebito" type="number" placeholder="Débito R$" />
+        <input id="pagCredito" type="number" placeholder="Crédito R$" />
+        <input id="pagLink" type="number" placeholder="Link de pagamento R$" />
 
-<div id="itens"></div>
+        <div class="row">
+          <label><input id="somenteTotalChk" type="checkbox" /> Registrar só o total (sem produtos)</label>
+        </div>
 
-<label>Vendedora</label>
-<select id="vendedoraSelect"></select>
+        <div id="totalManualRow" style="display:none;">
+          <input id="totalManual" type="number" placeholder="Valor total R$" />
+        </div>
 
-<label>Turno</label>
-<select id="turno">
-<option>Manhã</option>
-<option>Tarde</option>
-</select>
+        <div class="total-box">
+          <div>Total calculado: R$ <span id="totalCalc">0.00</span></div>
+        </div>
 
-<label>Forma de Pagamento</label>
-<select id="pagamento">
-<option>Dinheiro</option>
-<option>PIX</option>
-<option>Débito</option>
-<option>Crédito</option>
-</select>
+        <button class="btn-primary" onclick="finalizarVenda()">Finalizar Venda</button>
 
-<h3>Total: R$ <span id="total">0</span></h3>
+        <hr />
 
-<button onclick="finalizarVenda()">Finalizar Venda</button>
+        <div class="atendimentos">
+          <h4>ATENDIMENTOS DO DIA</h4>
+          <div id="painelAtendimentos"></div>
+        </div>
 
-</div>
+      </aside>
+    </section>
+  </main>
 
-<script src="js/app.js"></script>
-
+  <script src="js/app.js"></script>
 </body>
 </html>
