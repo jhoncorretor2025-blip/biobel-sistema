@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biobel - Sistema de Vendas</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+<h1>Biobel</h1>
+<p>Sistema de Controle de Vendas</p>
+</header>
+
+<nav class="menu">
+
+<button onclick="mostrarPagina('vendas')">Vendas</button>
+<button onclick="mostrarPagina('caixa')">Caixa</button>
+<button onclick="mostrarPagina('saida')">Saída de Caixa</button>
+<button onclick="mostrarPagina('dashboard')">Dashboard</button>
+<button onclick="mostrarPagina('config')">Configurações</button>
+
+</nav>
+
+<main>
+
+<section id="vendas" class="pagina">
+
+<h2>Registrar Venda</h2>
+
+<label>Vendedora</label>
+<select id="vendedora">
+<option>Alessandra</option>
+<option>Letícia</option>
+</select>
+
+<label>Turno</label>
+<select id="turno">
+<option>Manhã</option>
+<option>Tarde</option>
+</select>
+
+<label>Produto</label>
+<input id="produto" placeholder="Nome do produto">
+
+<label>Valor</label>
+<input id="valor" type="number">
+
+<button onclick="adicionarProduto()">Adicionar Produto</button>
+
+<div id="listaProdutos"></div>
+
+<h3>Forma de pagamento</h3>
+
+<input id="dinheiro" placeholder="Dinheiro">
+<input id="pix" placeholder="Pix">
+<input id="debito" placeholder="Débito">
+<input id="credito" placeholder="Crédito">
+
+<button onclick="registrarVenda()">Registrar Venda</button>
+
+</section>
+
+<section id="caixa" class="pagina">
+
+<h2>Caixa</h2>
+
+<p>Saldo inicial: R$ <span id="saldoInicial">0</span></p>
+<p>Entradas: R$ <span id="entradas">0</span></p>
+<p>Saídas: R$ <span id="saidas">0</span></p>
+<p>Saldo atual: R$ <span id="saldoAtual">0</span></p>
+
+</section>
+
+<section id="saida" class="pagina">
+
+<h2>Saída de Caixa</h2>
+
+<input id="valorSaida" placeholder="Valor">
+
+<input id="descricaoSaida" placeholder="Descrição">
+
+<button onclick="registrarSaida()">Registrar Saída</button>
+
+</section>
+
+<section id="dashboard" class="pagina">
+
+<h2>Dashboard</h2>
+
+<p>Total vendido hoje: R$ <span id="totalHoje">0</span></p>
+<p>Total de vendas: <span id="quantidadeVendas">0</span></p>
+
+</section>
+
+<section id="config" class="pagina">
+
+<h2>Configurações</h2>
+
+<p>Aqui futuramente será cadastro de produtos e vendedoras.</p>
+
+</section>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
