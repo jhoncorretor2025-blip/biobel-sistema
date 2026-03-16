@@ -1,42 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dashboard</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biobel - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
+  <aside class="sidebar">
+    <h1>Biobel</h1>
+    <nav>
+      <button onclick="location.href='vendas.html'">Vendas</button>
+      <button onclick="location.href='caixa.html'">Caixa</button>
+      <button onclick="location.href='saida-caixa.html'">Saída</button>
+      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <button onclick="location.href='configuracao.html'">Configuração</button>
+    </nav>
+  </aside>
 
-<div class="sidebar">
+  <main class="container">
+    <header class="topbar">
+      <h2>Dashboard</h2>
+    </header>
 
-<h2>Biobel</h2>
+    <section class="content dashboard-grid">
+      <div class="card">
+        <h4>Total vendido hoje</h4>
+        <p id="dashTotalHoje">R$ 0.00</p>
+      </div>
+      <div class="card">
+        <h4>Total vendido no mês</h4>
+        <p id="dashTotalMes">R$ 0.00</p>
+      </div>
+      <div class="card">
+        <h4>Melhor vendedora</h4>
+        <p id="dashMelhorVendedora">-</p>
+      </div>
+      <div class="card">
+        <h4>Melhor dia</h4>
+        <p id="dashMelhorDia">-</p>
+      </div>
 
-<button onclick="location.href='vendas.html'">Vendas</button>
-<button onclick="location.href='dashboard.html'">Dashboard</button>
-<button onclick="location.href='configuracao.html'">Configuração</button>
+      <div class="card chart-card">
+        <h4>Vendas por vendedora</h4>
+        <canvas id="chartVendedora"></canvas>
+      </div>
 
-</div>
+      <div class="card chart-card">
+        <h4>Vendas por categoria</h4>
+        <canvas id="chartCategoria"></canvas>
+      </div>
 
-<div class="main">
+      <div class="card chart-card">
+        <h4>Vendas por forma</h4>
+        <canvas id="chartPagamento"></canvas>
+      </div>
 
-<h1>Dashboard</h1>
+      <div class="card chart-card">
+        <h4>Top produtos</h4>
+        <canvas id="chartProdutos"></canvas>
+      </div>
 
-<p>Total vendido: R$ <span id="totalVendido">0</span></p>
+    </section>
+  </main>
 
-<p>Total de vendas: <span id="totalVendas">0</span></p>
-
-<p>Ticket médio: R$ <span id="ticketMedio">0</span></p>
-
-</div>
-
-<script src="js/app.js"></script>
-
+  <script src="js/app.js"></script>
+  <script>
+    // inicializa dashboard após carregar app.js
+    window.addEventListener('load', ()=>{ if(window.initDashboard) initDashboard(); });
+  </script>
 </body>
 </html>
