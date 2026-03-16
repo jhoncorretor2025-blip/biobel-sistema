@@ -1,69 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Configuração</title>
-
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biobel - Configuração</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
+  <aside class="sidebar">
+    <h1>Biobel</h1>
+    <nav>
+      <button onclick="location.href='vendas.html'">Vendas</button>
+      <button onclick="location.href='caixa.html'">Caixa</button>
+      <button onclick="location.href='saida-caixa.html'">Saída</button>
+      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <button onclick="location.href='configuracao.html'">Configuração</button>
+    </nav>
+  </aside>
 
-<div class="sidebar">
+  <main class="container">
+    <header class="topbar">
+      <h2>Configuração</h2>
+    </header>
 
-<h2>Biobel</h2>
+    <section class="content config-grid">
+      <div class="card">
+        <h3>Vendedoras</h3>
+        <input id="inputVendedora" placeholder="Nome da vendedora" />
+        <button onclick="cadastrarVendedora()">Adicionar</button>
+        <ul id="listaVendedoras"></ul>
+      </div>
 
-<button onclick="location.href='vendas.html'">Vendas</button>
-<button onclick="location.href='dashboard.html'">Dashboard</button>
-<button onclick="location.href='configuracao.html'">Configuração</button>
+      <div class="card">
+        <h3>Marcas</h3>
+        <input id="inputMarca" placeholder="Nome da marca" />
+        <button onclick="cadastrarMarca()">Adicionar</button>
+        <ul id="listaMarcas"></ul>
+      </div>
 
-</div>
+      <div class="card">
+        <h3>Categorias</h3>
+        <input id="inputCategoria" placeholder="Nova categoria" />
+        <button onclick="cadastrarCategoria()">Adicionar</button>
+        <ul id="listaCategorias"></ul>
+      </div>
 
-<div class="main">
+      <div class="card">
+        <h3>Produtos</h3>
+        <input id="prodNome" placeholder="Nome" />
+        <input id="prodMarca" placeholder="Marca" />
+        <input id="prodCategoria" placeholder="Categoria" />
+        <input id="prodPreco" type="number" placeholder="Preço R$" />
+        <button onclick="cadastrarProdutoConfig()">Cadastrar Produto</button>
+        <ul id="listaProdutosConfig"></ul>
+      </div>
+    </section>
+  </main>
 
-<h1>Configuração</h1>
-
-<h2>Novo Produto</h2>
-
-<input id="novoProduto" placeholder="Nome do produto">
-
-<input id="novoPreco" placeholder="Preço">
-
-<select id="novaCategoria">
-
-<option value="cabelo">Cabelo</option>
-<option value="perfume">Perfume</option>
-<option value="maquiagem">Maquiagem</option>
-<option value="cremes">Cremes</option>
-
-</select>
-
-<button onclick="cadastrarProduto()">
-
-Cadastrar Produto
-
-</button>
-
-<hr>
-
-<h2>Nova Vendedora</h2>
-
-<input id="novaVendedora" placeholder="Nome">
-
-<button onclick="cadastrarVendedora()">
-
-Cadastrar
-
-</button>
-
-</div>
-
-<script src="js/app.js"></script>
-
+  <script src="js/app.js"></script>
+  <script>
+    // inicializa configs ao abrir a página
+    window.addEventListener('load', ()=>{ if(window.initConfig) initConfig(); });
+  </script>
 </body>
 </html>
